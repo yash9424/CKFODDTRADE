@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="bg-spicechilli" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0E06"/>
+      <stop offset="55%" stop-color="#2E1608"/>
+      <stop offset="100%" stop-color="#4A2410"/>
+    </linearGradient>
+    <radialGradient id="glow-spicechilli" cx="0.72" cy="0.28" r="0.75">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#D4AF37" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig-spicechilli" cx="0.5" cy="0.5" r="0.78">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+    </radialGradient>
+    <linearGradient id="sheen-spicechilli" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A9851E"/>
+      <stop offset="45%" stop-color="#D4AF37"/>
+      <stop offset="58%" stop-color="#F3E5BE"/>
+      <stop offset="75%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A9851E"/>
+    </linearGradient>
+    <filter id="grain-spicechilli" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="soft-spicechilli" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg-spicechilli)"/>
+  <rect width="900" height="900" fill="url(#glow-spicechilli)"/>
+<g><g transform="translate(279.1 585.6) rotate(215.6) scale(1.14)" opacity="0.49">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#D4AF37"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(664.2 645.9) rotate(156.4) scale(1.22)" opacity="0.53">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(604.6 603.2) rotate(242.1) scale(1.16)" opacity="0.50">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(499.0 471.0) rotate(193.2) scale(0.98)" opacity="0.42">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(174.9 648.4) rotate(222.2) scale(1.22)" opacity="0.53">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(485.0 868.5) rotate(77.4) scale(1.51)" opacity="0.66">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(372.2 123.7) rotate(188.1) scale(0.52)" opacity="0.21">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#D4AF37"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(37.8 436.5) rotate(339.7) scale(0.94)" opacity="0.40">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(391.8 623.9) rotate(163.8) scale(1.19)" opacity="0.52">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(111.2 214.9) rotate(14.5) scale(0.64)" opacity="0.27">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(517.9 623.2) rotate(130.9) scale(1.19)" opacity="0.51">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(178.0 812.6) rotate(313.3) scale(1.44)" opacity="0.63">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(193.7 246.3) rotate(208.8) scale(0.68)" opacity="0.28">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#D4AF37"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(494.7 213.3) rotate(1.6) scale(0.64)" opacity="0.26">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(428.4 203.3) rotate(156.0) scale(0.63)" opacity="0.26">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(894.8 836.8) rotate(51.8) scale(1.47)" opacity="0.65">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(168.1 225.5) rotate(313.7) scale(0.66)" opacity="0.27">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(347.5 531.4) rotate(267.1) scale(1.06)" opacity="0.46">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(407.3 221.7) rotate(275.9) scale(0.65)" opacity="0.27">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#D4AF37"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(277.6 418.3) rotate(255.5) scale(0.91)" opacity="0.39">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(665.9 551.3) rotate(23.1) scale(1.09)" opacity="0.47">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(113.2 479.2) rotate(0.2) scale(0.99)" opacity="0.43">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(75.2 584.8) rotate(344.9) scale(1.14)" opacity="0.49">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(230.5 623.5) rotate(91.6) scale(1.19)" opacity="0.52">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(553.5 406.4) rotate(39.2) scale(0.90)" opacity="0.38">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#D4AF37"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(40.1 751.2) rotate(229.0) scale(1.36)" opacity="0.59">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(368.2 158.5) rotate(155.8) scale(0.57)" opacity="0.23">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(528.5 458.7) rotate(199.5) scale(0.97)" opacity="0.41">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(428.4 420.2) rotate(157.9) scale(0.92)" opacity="0.39">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g><g transform="translate(273.2 147.0) rotate(253.1) scale(0.55)" opacity="0.22">
+      <path d="M-6 -60 C 34 -30, 40 30, 4 74 C 0 60, -14 44, -18 20 C -22 -6, -16 -40, -6 -60 Z" fill="#C05A24"/>
+      <path d="M-6 -60 l -16 -16 l 22 4 z" fill="#E8A13C" opacity="0.85"/>
+    </g></g>
+  <rect width="900" height="900" fill="url(#vig-spicechilli)"/>
+  <rect width="900" height="900" filter="url(#grain-spicechilli)" opacity="0.13" style="mix-blend-mode:overlay"/>
+</svg>

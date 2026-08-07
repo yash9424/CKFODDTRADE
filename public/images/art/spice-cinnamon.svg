@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="bg-spicecinnamon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0E06"/>
+      <stop offset="55%" stop-color="#2E1608"/>
+      <stop offset="100%" stop-color="#4A2410"/>
+    </linearGradient>
+    <radialGradient id="glow-spicecinnamon" cx="0.72" cy="0.28" r="0.75">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#D4AF37" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig-spicecinnamon" cx="0.5" cy="0.5" r="0.78">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+    </radialGradient>
+    <linearGradient id="sheen-spicecinnamon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A9851E"/>
+      <stop offset="45%" stop-color="#D4AF37"/>
+      <stop offset="58%" stop-color="#F3E5BE"/>
+      <stop offset="75%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A9851E"/>
+    </linearGradient>
+    <filter id="grain-spicecinnamon" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="soft-spicecinnamon" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg-spicecinnamon)"/>
+  <rect width="900" height="900" fill="url(#glow-spicecinnamon)"/>
+<g><g transform="rotate(-33.7 227.3 183.4)" opacity="0.19">
+      <rect x="227.3" y="183.4" width="109.0" height="15.9" rx="7.9" fill="#D4AF37"/>
+      <ellipse cx="227.3" cy="191.3" rx="4.8" ry="7.9" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(31.2 418.7 596.1)" opacity="0.42">
+      <rect x="418.7" y="596.1" width="298.8" height="24.0" rx="12.0" fill="#E8A13C"/>
+      <ellipse cx="418.7" cy="608.1" rx="7.2" ry="12.0" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-19.3 663.8 411.9)" opacity="0.31">
+      <rect x="663.8" y="411.9" width="219.4" height="13.4" rx="6.7" fill="#E8A13C"/>
+      <ellipse cx="663.8" cy="418.6" rx="4.0" ry="6.7" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-21.7 408.7 649.0)" opacity="0.45">
+      <rect x="408.7" y="649.0" width="280.7" height="18.2" rx="9.1" fill="#E8A13C"/>
+      <ellipse cx="408.7" cy="658.1" rx="5.4" ry="9.1" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-24.6 105.2 351.3)" opacity="0.28">
+      <rect x="105.2" y="351.3" width="175.2" height="24.3" rx="12.2" fill="#E8A13C"/>
+      <ellipse cx="105.2" cy="363.5" rx="7.3" ry="12.2" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(17.9 209.4 650.5)" opacity="0.45">
+      <rect x="209.4" y="650.5" width="253.4" height="26.0" rx="13.0" fill="#D4AF37"/>
+      <ellipse cx="209.4" cy="663.5" rx="7.8" ry="13.0" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(18.4 57.6 369.9)" opacity="0.29">
+      <rect x="57.6" y="369.9" width="144.9" height="15.2" rx="7.6" fill="#E8A13C"/>
+      <ellipse cx="57.6" cy="377.5" rx="4.6" ry="7.6" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-3.7 -27.9 311.8)" opacity="0.26">
+      <rect x="-27.9" y="311.8" width="103.5" height="16.5" rx="8.2" fill="#E8A13C"/>
+      <ellipse cx="-27.9" cy="320.0" rx="4.9" ry="8.2" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(1.6 538.0 207.5)" opacity="0.20">
+      <rect x="538.0" y="207.5" width="154.1" height="14.9" rx="7.4" fill="#E8A13C"/>
+      <ellipse cx="538.0" cy="215.0" rx="4.5" ry="7.4" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-18.6 -41.6 750.4)" opacity="0.50">
+      <rect x="-41.6" y="750.4" width="220.8" height="37.0" rx="18.5" fill="#E8A13C"/>
+      <ellipse cx="-41.6" cy="768.9" rx="11.1" ry="18.5" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-17.1 407.1 372.9)" opacity="0.29">
+      <rect x="407.1" y="372.9" width="108.5" height="24.0" rx="12.0" fill="#D4AF37"/>
+      <ellipse cx="407.1" cy="384.9" rx="7.2" ry="12.0" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(10.2 546.2 702.3)" opacity="0.48">
+      <rect x="546.2" y="702.3" width="237.7" height="35.1" rx="17.6" fill="#E8A13C"/>
+      <ellipse cx="546.2" cy="719.9" rx="10.5" ry="17.6" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-8.4 538.9 836.0)" opacity="0.55">
+      <rect x="538.9" y="836.0" width="171.0" height="38.3" rx="19.2" fill="#E8A13C"/>
+      <ellipse cx="538.9" cy="855.1" rx="11.5" ry="19.2" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-1.8 486.8 698.1)" opacity="0.47">
+      <rect x="486.8" y="698.1" width="171.8" height="24.1" rx="12.1" fill="#E8A13C"/>
+      <ellipse cx="486.8" cy="710.1" rx="7.2" ry="12.1" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(13.0 668.6 771.9)" opacity="0.51">
+      <rect x="668.6" y="771.9" width="307.9" height="35.6" rx="17.8" fill="#E8A13C"/>
+      <ellipse cx="668.6" cy="789.7" rx="10.7" ry="17.8" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(26.6 126.4 735.7)" opacity="0.49">
+      <rect x="126.4" y="735.7" width="285.1" height="22.6" rx="11.3" fill="#D4AF37"/>
+      <ellipse cx="126.4" cy="747.0" rx="6.8" ry="11.3" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(4.4 30.5 422.1)" opacity="0.32">
+      <rect x="30.5" y="422.1" width="233.9" height="27.0" rx="13.5" fill="#E8A13C"/>
+      <ellipse cx="30.5" cy="435.7" rx="8.1" ry="13.5" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(19.4 -21.4 246.0)" opacity="0.22">
+      <rect x="-21.4" y="246.0" width="150.7" height="10.7" rx="5.3" fill="#E8A13C"/>
+      <ellipse cx="-21.4" cy="251.3" rx="3.2" ry="5.3" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-25.2 730.7 193.3)" opacity="0.19">
+      <rect x="730.7" y="193.3" width="96.1" height="12.0" rx="6.0" fill="#E8A13C"/>
+      <ellipse cx="730.7" cy="199.4" rx="3.6" ry="6.0" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-27.9 273.2 646.4)" opacity="0.44">
+      <rect x="273.2" y="646.4" width="277.9" height="29.7" rx="14.8" fill="#E8A13C"/>
+      <ellipse cx="273.2" cy="661.2" rx="8.9" ry="14.8" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(-29.8 763.2 194.5)" opacity="0.19">
+      <rect x="763.2" y="194.5" width="122.7" height="10.4" rx="5.2" fill="#D4AF37"/>
+      <ellipse cx="763.2" cy="199.7" rx="3.1" ry="5.2" fill="#C05A24" opacity="0.7"/>
+    </g><g transform="rotate(32.5 699.0 586.6)" opacity="0.41">
+      <rect x="699.0" y="586.6" width="286.3" height="23.9" rx="11.9" fill="#E8A13C"/>
+      <ellipse cx="699.0" cy="598.5" rx="7.2" ry="11.9" fill="#C05A24" opacity="0.7"/>
+    </g></g>
+  <rect width="900" height="900" fill="url(#vig-spicecinnamon)"/>
+  <rect width="900" height="900" filter="url(#grain-spicecinnamon)" opacity="0.13" style="mix-blend-mode:overlay"/>
+</svg>

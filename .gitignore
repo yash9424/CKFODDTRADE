@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+.env*.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Form submissions written by lib/submissions.ts (contains customer PII)
+data/submissions.jsonl
+
+# Raw photography originals are kept but need not be deployed
+# (uncomment if you would rather not commit them)
+# assets/source-photos
