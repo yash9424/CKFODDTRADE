@@ -126,6 +126,34 @@
   transform: none;
 }
 
+/* Trade-network map: dashes travel along each great-circle lane, and the
+   Dubai hub ring breathes. Both stop under reduced-motion below. */
+@keyframes nm-flow {
+  to {
+    stroke-dashoffset: -180;
+  }
+}
+.nm-flow {
+  animation: nm-flow linear infinite;
+}
+
+@keyframes nm-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+.nm-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nm-pulse 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1 !important;

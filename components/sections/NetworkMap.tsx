@@ -1,155 +1,206 @@
 import { Reveal } from '@/components/ui/Reveal'
-
-type Node = {
-  id: string
-  label: string
-  sub: string
-  x: number
-  y: number
-  kind: 'origin' | 'hub' | 'market'
-}
+import { lanes, landLayer, mapSize, points, type PlaceKey } from '@/data/worldMap'
 
 /**
- * India → Dubai → GCC / international markets. A schematic (not a survey map):
- * abstracted landmasses keep the focus on the trade lanes rather than borders.
+ * India → Dubai → GCC / international markets, drawn on real geography.
+ *
+ * The land, borders and graticule come from Natural Earth 1:110m data and
+ * ship as a cached static SVG (`data/worldMap.ts` is generated alongside it by
+ * scripts/generate-worldmap.mjs). This overlay shares that file's viewBox, so
+ * the two layers align exactly. Cities sit at their true coordinates and the
+ * lanes are great-circle routes, not decorative curves.
  */
-const nodes: Node[] = [
-  { id: 'surat', label: 'Surat', sub: 'Procurement', x: 690, y: 300, kind: 'origin' },
-  { id: 'mumbai', label: 'Mumbai', sub: 'Export & Logistics', x: 700, y: 350, kind: 'origin' },
-  { id: 'dubai', label: 'Dubai', sub: 'Headquarters', x: 500, y: 265, kind: 'hub' },
-  { id: 'gcc', label: 'GCC', sub: 'Saudi · Qatar · Kuwait · Oman', x: 430, y: 330, kind: 'market' },
-  { id: 'europe', label: 'Europe', sub: 'Dairy Sourcing', x: 250, y: 120, kind: 'market' },
-  { id: 'africa', label: 'Africa', sub: 'Developing Markets', x: 300, y: 420, kind: 'market' },
-  { id: 'asia', label: 'Asia', sub: 'Selected Markets', x: 830, y: 400, kind: 'market' },
-]
 
-const lanes: [string, string][] = [
-  ['surat', 'dubai'],
-  ['mumbai', 'dubai'],
-  ['dubai', 'gcc'],
-  ['dubai', 'europe'],
-  ['dubai', 'africa'],
-  ['dubai', 'asia'],
-]
-
-function byId(id: string) {
-  return nodes.find((n) => n.id === id)!
+type Marker = {
+  key: PlaceKey
+  label: string
+  sub: string
+  kind: 'hub' | 'origin' | 'market'
+  /** Where the label sits relative to the node. */
+  place: 'above' | 'below' | 'right'
 }
 
+const markers: Marker[] = [
+  { key: 'dubai', label: 'Dubai', sub: 'Headquarters', kind: 'hub', place: 'above' },
+  { key: 'europe', label: 'Europe', sub: 'Dairy sourcing', kind: 'market', place: 'above' },
+  { key: 'gcc', label: 'GCC', sub: 'Saudi · Qatar · Kuwait · Oman', kind: 'market', place: 'below' },
+  { key: 'africa', label: 'Africa', sub: 'Developing markets', kind: 'market', place: 'below' },
+  { key: 'asia', label: 'Asia', sub: 'Selected markets', kind: 'market', place: 'below' },
+]
+
+/**
+ * Surat and Mumbai are ~230 km apart, which is 17px at this scale — too close
+ * for two labels. Both markers are drawn, sharing one label to the right.
+ */
+const indiaCluster = {
+  nodes: ['surat', 'mumbai'] as PlaceKey[],
+  label: 'Surat · Mumbai',
+  sub: 'India procurement',
+}
+
+const FILL = {
+  hub: '#D4AF37',
+  origin: '#F3E5BE',
+  market: '#6FC3A0',
+} as const
+
 export function NetworkMap() {
+  const { width, height } = mapSize
+
   return (
-    <Reveal className="relative">
-      <div className="grain relative overflow-hidden border border-ivory/10 bg-emerald-950/60">
-        <svg
-          viewBox="0 0 960 520"
-          className="h-auto w-full"
-          role="img"
-          aria-label="CK Foodstuff trade network: Surat and Mumbai procurement feeding the Dubai headquarters, which supplies the GCC, Europe, Africa and Asia."
-        >
-          <defs>
-            <linearGradient id="lane" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.15" />
-              <stop offset="50%" stopColor="#D4AF37" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.15" />
-            </linearGradient>
-            <radialGradient id="hubGlow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
-            </radialGradient>
-          </defs>
+    <Reveal>
+      <figure className="relative overflow-hidden border border-ivory/15 bg-emerald-950">
+        <div className="relative" style={{ aspectRatio: `${width} / ${height}` }}>
+          {/* Land, borders and graticule — cached static layer */}
+          <img
+            src={landLayer}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full select-none"
+            draggable={false}
+          />
 
-          {/* graticule */}
-          <g stroke="#A9DCC5" strokeOpacity="0.07" strokeWidth="1">
-            {Array.from({ length: 13 }, (_, i) => (
-              <line key={`v${i}`} x1={i * 80} y1="0" x2={i * 80} y2="520" />
-            ))}
-            {Array.from({ length: 7 }, (_, i) => (
-              <line key={`h${i}`} x1="0" y1={i * 80} x2="960" y2={i * 80} />
-            ))}
-          </g>
+          {/* Trade lanes, nodes and labels — same viewBox, aligns exactly */}
+          <svg
+            viewBox={`0 0 ${width} ${height}`}
+            preserveAspectRatio="xMidYMid meet"
+            className="absolute inset-0 h-full w-full"
+            role="img"
+            aria-label="CK Foodstuff trade network: procurement in Surat and Mumbai feeding the Dubai headquarters, which supplies the GCC, Europe, Africa and Asia."
+          >
+            <defs>
+              <radialGradient id="nm-hub-glow" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.55" />
+                <stop offset="60%" stopColor="#D4AF37" stopOpacity="0.12" />
+                <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
+              </radialGradient>
+            </defs>
 
-          {/* abstracted landmasses */}
-          <g fill="#12855A" fillOpacity="0.16">
-            <path d="M120 90 q90-40 190-14 t150 34 q40 40-10 76 t-160 30 q-120-8-170-52 t0-74Z" />
-            <path d="M250 330 q80-46 150-10 t70 92 q-6 74-76 92 t-128-46 q-38-70-16-128Z" />
-            <path d="M470 210 q90-52 190-16 t140 78 q22 62-58 92 t-190 4 q-96-40-102-98 t20-60Z" />
-            <path d="M760 300 q100-30 150 26 t20 122 q-70 44-150 6 t-60-116 q6-30 40-38Z" />
-          </g>
+            {/* Lanes: a faint continuous route with a travelling dash on top */}
+            <g fill="none" strokeLinecap="round">
+              {lanes.map((lane) => (
+                <g key={lane.id}>
+                  <path
+                    d={lane.d}
+                    stroke={lane.kind === 'inbound' ? '#F3E5BE' : '#D4AF37'}
+                    strokeOpacity="0.22"
+                    strokeWidth="1.6"
+                  />
+                  <path
+                    d={lane.d}
+                    stroke={lane.kind === 'inbound' ? '#F3E5BE' : '#D4AF37'}
+                    strokeOpacity="0.9"
+                    strokeWidth="2"
+                    strokeDasharray="3 15"
+                    className="nm-flow"
+                    style={{
+                      // Longer routes take proportionally longer to traverse.
+                      animationDuration: `${Math.max(2.4, lane.arcDegrees / 14)}s`,
+                    }}
+                  />
+                </g>
+              ))}
+            </g>
 
-          {/* trade lanes */}
-          {lanes.map(([from, to]) => {
-            const a = byId(from)
-            const b = byId(to)
-            const mx = (a.x + b.x) / 2
-            const my = (a.y + b.y) / 2 - Math.abs(a.x - b.x) * 0.22 - 20
-            return (
-              <path
-                key={`${from}-${to}`}
-                d={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
-                fill="none"
-                stroke="url(#lane)"
-                strokeWidth="2"
-                strokeDasharray="3 12"
-                strokeLinecap="round"
+            {/* India procurement cluster */}
+            <g>
+              {indiaCluster.nodes.map((key) => (
+                <circle key={key} cx={points[key].x} cy={points[key].y} r="5" fill={FILL.origin} />
+              ))}
+              <line
+                x1={points.mumbai.x + 8}
+                y1={(points.surat.y + points.mumbai.y) / 2}
+                x2={points.mumbai.x + 24}
+                y2={(points.surat.y + points.mumbai.y) / 2}
+                stroke="#D4AF37"
+                strokeWidth="1"
+                strokeOpacity="0.5"
               />
-            )
-          })}
+              <text
+                x={points.mumbai.x + 30}
+                y={(points.surat.y + points.mumbai.y) / 2 - 2}
+                textAnchor="start"
+                className="font-display"
+                fill="#FBF9F4"
+                fontSize="21"
+                fontWeight="600"
+              >
+                {indiaCluster.label}
+              </text>
+              <text
+                x={points.mumbai.x + 30}
+                y={(points.surat.y + points.mumbai.y) / 2 + 16}
+                textAnchor="start"
+                fill="#A9DCC5"
+                fontSize="11.5"
+                letterSpacing="1.7"
+              >
+                {indiaCluster.sub.toUpperCase()}
+              </text>
+            </g>
 
-          {/* nodes */}
-          {nodes.map((node) => {
-            const isHub = node.kind === 'hub'
-            const isOrigin = node.kind === 'origin'
-            return (
-              <g key={node.id}>
-                {isHub && <circle cx={node.x} cy={node.y} r="70" fill="url(#hubGlow)" />}
-                <circle
-                  cx={node.x}
-                  cy={node.y}
-                  r={isHub ? 26 : 17}
-                  fill="none"
-                  stroke="#D4AF37"
-                  strokeOpacity={isHub ? 0.7 : 0.35}
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx={node.x}
-                  cy={node.y}
-                  r={isHub ? 9 : isOrigin ? 6 : 5}
-                  fill={isHub ? '#D4AF37' : isOrigin ? '#F3E5BE' : '#6FC3A0'}
-                />
-                <text
-                  x={node.x}
-                  y={node.y - (isHub ? 40 : 30)}
-                  textAnchor="middle"
-                  className="font-display"
-                  fill="#FBF9F4"
-                  fontSize={isHub ? 22 : 17}
-                  fontWeight="600"
-                >
-                  {node.label}
-                </text>
-                <text
-                  x={node.x}
-                  y={node.y + (isHub ? 52 : 40)}
-                  textAnchor="middle"
-                  fill="#A9DCC5"
-                  fontSize="11"
-                  letterSpacing="1.6"
-                >
-                  {node.sub.toUpperCase()}
-                </text>
-              </g>
-            )
-          })}
-        </svg>
+            {/* Markers */}
+            {markers.map((marker) => {
+              const p = points[marker.key]
+              const hub = marker.kind === 'hub'
+              // The caption always sits under its title — for labels placed
+              // above the node that means lifting the title far enough clear
+              // to leave room for the caption between the two.
+              const titleY =
+                marker.place === 'above' ? p.y - (hub ? 50 : 42) : p.y + (hub ? 42 : 34)
+              const subY = titleY + 17
 
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-ivory/10 px-6 py-5 text-[11px] uppercase tracking-wide2 text-ivory/55 sm:px-8">
-          <LegendDot color="#F3E5BE" label="India procurement" />
-          <LegendDot color="#D4AF37" label="Dubai headquarters" />
-          <LegendDot color="#6FC3A0" label="Destination markets" />
-          <span className="ml-auto text-ivory/35">India → Dubai → GCC / International Markets</span>
+              return (
+                <g key={marker.key}>
+                  {hub && <circle cx={p.x} cy={p.y} r="62" fill="url(#nm-hub-glow)" />}
+                  <circle
+                    cx={p.x}
+                    cy={p.y}
+                    r={hub ? 20 : 13}
+                    fill="none"
+                    stroke="#D4AF37"
+                    strokeOpacity={hub ? 0.75 : 0.4}
+                    strokeWidth="1.4"
+                  />
+                  {hub && <circle cx={p.x} cy={p.y} r="20" className="nm-pulse" fill="none" stroke="#D4AF37" strokeWidth="1.4" />}
+                  <circle cx={p.x} cy={p.y} r={hub ? 8 : 5.5} fill={FILL[marker.kind]} />
+
+                  <text
+                    x={p.x}
+                    y={titleY}
+                    textAnchor="middle"
+                    className="font-display"
+                    fill="#FBF9F4"
+                    fontSize={hub ? 27 : 21}
+                    fontWeight="600"
+                  >
+                    {marker.label}
+                  </text>
+                  <text
+                    x={p.x}
+                    y={subY}
+                    textAnchor="middle"
+                    fill={hub ? '#EBD48F' : '#A9DCC5'}
+                    fontSize="11.5"
+                    letterSpacing="1.7"
+                  >
+                    {marker.sub.toUpperCase()}
+                  </text>
+                </g>
+              )
+            })}
+          </svg>
         </div>
-      </div>
+
+        <figcaption className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-ivory/15 px-6 py-5 text-[11px] uppercase tracking-wide2 text-ivory/55 sm:px-8">
+          <LegendDot color={FILL.origin} label="India procurement" />
+          <LegendDot color={FILL.hub} label="Dubai headquarters" />
+          <LegendDot color={FILL.market} label="Destination markets" />
+          <span className="ml-auto text-ivory/35">
+            India → Dubai → GCC / International Markets
+          </span>
+        </figcaption>
+      </figure>
     </Reveal>
   )
 }

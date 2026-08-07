@@ -152,6 +152,24 @@ Slots resolve through `lib/images.ts` (page heroes, CTA bands, panels) and
 `data/products.ts` (category and product imagery), so any swap is a one-line
 edit.
 
+### Trade-network map
+
+`components/sections/NetworkMap.tsx` (home, About, Supply Chain) draws real
+geography, not decoration. `node scripts/generate-worldmap.mjs` takes Natural
+Earth 1:110m country boundaries from the `world-atlas` package, projects them
+with d3-geo (`geoNaturalEarth1`, framed on Europe / Africa / Middle East /
+Asia) and emits two files:
+
+- `public/images/art/world-land.svg` — land, interior borders and a projected
+  graticule; a cached static layer so the ~60KB of path data is fetched once
+  rather than inlined into all three pages
+- `data/worldMap.ts` — the small overlay: viewBox, projected city coordinates
+  and great-circle trade lanes
+
+Both share a viewBox, so the layers align exactly. Every city sits at its true
+latitude/longitude and every lane is a real great-circle route. To move or add
+a location, edit `PLACES` / `LANES` in the script and re-run it.
+
 Dairy is the one category with no photography yet and still uses the generated
 brand artwork in `public/images/art/` (`node scripts/generate-art.mjs`,
 deterministic). [`public/images/README.md`](public/images/README.md) lists every
