@@ -1,12 +1,13 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { mainNav, type NavItem } from '@/data/navigation'
 import { site, whatsappLink } from '@/lib/site'
 import { cn } from '@/lib/cn'
-import { Icon } from '@/components/ui/Icon'
+import { Icon, type IconName } from '@/components/ui/Icon'
 import { Logo } from './Logo'
 
 export function Header() {
@@ -251,66 +252,136 @@ function MegaPanel({
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
       className={cn(
-        'absolute inset-x-0 top-full hidden origin-top border-b border-emerald-950/10 bg-ivory shadow-[0_28px_60px_-30px_rgba(3,24,15,0.5)] transition-all duration-300 xl:block',
+        // The panel is fully opaque; the short opacity step keeps page content
+        // from showing through mid-transition the way a slow fade would.
+        'absolute inset-x-0 top-full hidden origin-top overflow-hidden border-b border-emerald-950/10 bg-gradient-to-b from-ivory-100 to-ivory-200 shadow-[0_34px_70px_-30px_rgba(3,24,15,0.55)] xl:block',
+        'transition-[opacity,transform,visibility] duration-200 ease-out',
         open
           ? 'pointer-events-auto visible translate-y-0 opacity-100'
-          : 'pointer-events-none invisible -translate-y-2 opacity-0',
+          : 'pointer-events-none invisible -translate-y-1.5 opacity-0',
       )}
     >
-      <div className="container-ck grid grid-cols-12 gap-10 py-10">
-        <div className="col-span-3 border-r border-emerald-950/10 pr-8">
-          <p className="eyebrow rule-gold text-gold-700">{item.columnTitle}</p>
-          <h3 className="mt-4 font-display text-2xl font-semibold text-emerald-950">
-            {item.label}
-          </h3>
-          <Link
-            href={item.href}
-            className="link-underline mt-5 inline-flex text-[12px] font-semibold uppercase tracking-wide2 text-emerald-800"
-          >
-            View overview
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 16 16"
-              className="h-3 w-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M1 8h13M9 3l5 5-5 5" />
-            </svg>
-          </Link>
-        </div>
+      {/* gold hairline across the top edge */}
+      <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent" />
 
-        <div className="col-span-9 grid grid-cols-3 gap-x-8 gap-y-2">
+      <div className="container-ck grid grid-cols-12 gap-8 py-8">
+        {/* Promo column — photograph under a deep emerald wash */}
+        <Link
+          href={item.href}
+          className="group relative col-span-4 flex min-h-[19rem] flex-col justify-end overflow-hidden bg-emerald-950"
+        >
+          {item.panelImage && (
+            <Image
+              src={item.panelImage}
+              alt=""
+              fill
+              sizes="30vw"
+              className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/75 to-emerald-950/35" />
+          <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gold-500 transition-transform duration-500 group-hover:scale-x-100" />
+
+          <div className="relative p-7">
+            <p className="eyebrow rule-gold text-gold-300">{item.columnTitle}</p>
+            <h3 className="mt-4 font-display text-[26px] font-semibold leading-tight text-ivory">
+              {item.label}
+            </h3>
+            {item.panelBlurb && (
+              <p className="mt-3 max-w-[26ch] text-[13px] leading-relaxed text-ivory/70">
+                {item.panelBlurb}
+              </p>
+            )}
+            <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide2 text-gold-300">
+              View overview
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="square"
+              >
+                <path d="M1 8h13M9 3l5 5-5 5" />
+              </svg>
+            </span>
+          </div>
+        </Link>
+
+        {/* Link rows with thumbnails */}
+        <div className="col-span-8 grid grid-cols-2 gap-x-4 gap-y-1 self-center">
           {item.children?.map((child) => (
             <Link
               key={child.href}
               href={child.href}
-              className="group flex flex-col border-l-2 border-transparent py-3 pl-4 transition-all duration-300 hover:border-gold-500 hover:bg-ivory-200"
+              className="group flex items-center gap-4 border border-transparent p-3 transition-all duration-300 hover:border-emerald-950/10 hover:bg-white hover:shadow-card"
             >
-              <span className="text-[15px] font-semibold text-emerald-950 transition-colors group-hover:text-emerald-700">
-                {child.label}
+              <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden border border-emerald-950/10 bg-ivory-200">
+                {child.image ? (
+                  <Image
+                    src={child.image}
+                    alt=""
+                    fill
+                    sizes="56px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <Icon
+                    name={(child.icon ?? 'globe') as IconName}
+                    className="h-6 w-6 text-gold-600 transition-colors duration-300 group-hover:text-emerald-800"
+                  />
+                )}
               </span>
-              {child.blurb && (
-                <span className="mt-1 text-[12.5px] leading-relaxed text-charcoal-muted">
-                  {child.blurb}
+
+              <span className="min-w-0 flex-1">
+                <span className="block text-[15px] font-semibold text-emerald-950 transition-colors group-hover:text-emerald-700">
+                  {child.label}
                 </span>
-              )}
+                {child.blurb && (
+                  <span className="mt-0.5 block truncate text-[12.5px] leading-relaxed text-charcoal-muted">
+                    {child.blurb}
+                  </span>
+                )}
+              </span>
+
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="h-3 w-3 shrink-0 text-gold-600 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="square"
+              >
+                <path d="M1 8h13M9 3l5 5-5 5" />
+              </svg>
             </Link>
           ))}
         </div>
       </div>
 
-      <div className="border-t border-emerald-950/10 bg-ivory-200">
+      <div className="relative border-t border-emerald-950/10 bg-emerald-950">
         <div className="container-ck flex items-center justify-between py-4">
-          <p className="text-[12.5px] text-charcoal-light">
+          <p className="text-[12.5px] text-ivory/65">
             Buying at container scale? Send your product, quantity, packaging and destination port.
           </p>
           <Link
             href="/request-a-quote"
-            className="text-[11px] font-semibold uppercase tracking-wide2 text-gold-700 transition-colors hover:text-emerald-900"
+            className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide2 text-gold-400 transition-colors hover:text-gold-200"
           >
-            Request a Quote →
+            Request a Quote
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="square"
+            >
+              <path d="M1 8h13M9 3l5 5-5 5" />
+            </svg>
           </Link>
         </div>
       </div>

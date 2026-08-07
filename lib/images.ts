@@ -41,6 +41,10 @@ export const images = {
   /** Default background for the closing call-to-action band. */
   ctaDefault: photo('dubai-terminal-dusk'),
 
+  /** Promo column backgrounds inside the desktop mega menu. */
+  megaProducts: photo('spices-flatlay-wood'),
+  megaServices: photo('dubai-terminal-dusk'),
+
   /** No dairy photography supplied yet — generated brand artwork stands in. */
   dairyFallback: art('dairy-hero'),
 } as const
