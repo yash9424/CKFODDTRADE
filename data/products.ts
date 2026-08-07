@@ -305,8 +305,8 @@ export const productCategories: ProductCategory[] = [
       'CK Foodstuff is developing European sourcing relationships for premium milk powder as part of the Company’s international product diversification strategy. The dairy category is intended to serve wholesalers, distributors, food manufacturers and institutional customers.',
     summary:
       'European sourcing relationships under development for premium milk powder serving wholesalers, manufacturers and institutional customers.',
-    art: '/images/art/dairy.svg',
-    heroArt: '/images/art/dairy-hero.svg',
+    art: '/images/photos/dairy-pasture.jpg',
+    heroArt: '/images/photos/dairy-pasture.jpg',
     ctaLabel: 'Request Milk Powder Information',
     seoTitle: 'Milk Powder Trading & Sourcing Dubai',
     seoDescription:
@@ -322,7 +322,7 @@ export const productCategories: ProductCategory[] = [
           'Initial identified commercial opportunity',
           'European sourcing relationships under development',
         ],
-        art: '/images/art/dairy-powder.svg',
+        art: '/images/photos/dairy-pasture.jpg',
       },
     ],
     photography: [

@@ -5,46 +5,46 @@
  * is a one-line edit rather than a hunt through components. Product imagery
  * lives alongside its copy in `data/products.ts`.
  *
- * `photos/*.jpg`  — supplied photography, imported via scripts/prepare-photos.mjs
- * `art/*.svg`     — generated brand artwork, used where no photograph exists yet
+ * Sources:
+ *   photos/*.jpg  supplied photography (imported by scripts/prepare-photos.mjs)
+ *                 plus high-resolution hero photography sourced from Wikimedia
+ *                 Commons (scripts/fetch-hero-photos.mjs). Licences and the
+ *                 required CC BY attributions are recorded in PHOTO-CREDITS.md.
+ *   art/*.svg     generated brand artwork (scripts/generate-art.mjs)
  */
 
 const photo = (name: string) => `/images/photos/${name}.jpg`
-const art = (name: string) => `/images/art/${name}.svg`
 
 export const images = {
-  /** Home page hero — container vessel, Dubai skyline, gantry cranes. */
-  homeHero: photo('dubai-port-container-vessel'),
+  /** Home page hero — container terminal panorama, 3600px wide. */
+  homeHero: photo('container-terminal-panorama'),
 
-  /** Dubai headquarters panel on the home page. */
-  dubai: photo('dubai-port-container-vessel'),
+  /** Dubai headquarters panel. */
+  dubai: photo('dubai-skyline-night'),
 
   /** Trade-network / leadership panel. */
-  network: photo('jebel-ali-terminal-aerial'),
+  network: photo('container-terminal-panorama'),
 
   /** Page heroes. */
-  aboutHero: photo('dubai-port-container-vessel'),
-  productsHero: photo('jebel-ali-terminal-aerial'),
-  servicesHero: photo('dubai-terminal-dusk'),
-  supplyChainHero: photo('jebel-ali-terminal-aerial'),
-  supplierHero: photo('rice-farm-jute-sacks'),
-  investorsHero: photo('jebel-ali-terminal-aerial'),
-  contactHero: photo('dubai-terminal-dusk'),
-  quoteHero: photo('dubai-terminal-dusk'),
-  legalHero: photo('dubai-terminal-dusk'),
+  aboutHero: photo('dubai-skyline-dusk'),
+  productsHero: photo('container-yard'),
+  servicesHero: photo('container-terminal-night'),
+  supplyChainHero: photo('container-terminal-panorama'),
+  supplierHero: photo('rice-harvest-field'),
+  investorsHero: photo('container-yard'),
+  contactHero: photo('dubai-skyline-night'),
+  quoteHero: photo('container-terminal-night'),
+  legalHero: photo('dubai-skyline-night'),
 
   /** Supporting panels. */
-  logistics: photo('dubai-terminal-dusk'),
-  sourcing: photo('rice-farm-jute-sacks'),
-  port: photo('jebel-ali-terminal-aerial'),
+  logistics: photo('container-terminal-night'),
+  sourcing: photo('rice-harvest-field'),
+  port: photo('container-terminal-panorama'),
 
   /** Default background for the closing call-to-action band. */
-  ctaDefault: photo('dubai-terminal-dusk'),
+  ctaDefault: photo('container-terminal-night'),
 
   /** Promo column backgrounds inside the desktop mega menu. */
   megaProducts: photo('spices-flatlay-wood'),
-  megaServices: photo('dubai-terminal-dusk'),
-
-  /** No dairy photography supplied yet — generated brand artwork stands in. */
-  dairyFallback: art('dairy-hero'),
+  megaServices: photo('container-terminal-night'),
 } as const

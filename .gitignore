@@ -13,3 +13,8 @@ data/submissions.jsonl
 # Raw photography originals are kept but need not be deployed
 # (uncomment if you would rather not commit them)
 # assets/source-photos
+
+# Photo-search working files
+scripts/.contact-sheets/
+scripts/.photo-candidates.json
+scripts/.dairy-candidates.json
