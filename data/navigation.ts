@@ -81,6 +81,7 @@ export const footerNav = {
     { label: 'Supply Chain', href: '/supply-chain' },
     { label: 'Become a Supplier', href: '/become-a-supplier' },
     { label: 'Investors', href: '/investors' },
+    { label: 'Company Report', href: '/reports' },
     { label: 'Contact', href: '/contact' },
   ],
   productLinks: [

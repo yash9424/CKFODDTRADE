@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/supply-chain', priority: 0.7, frequency: 'monthly' },
     { path: '/become-a-supplier', priority: 0.7, frequency: 'monthly' },
     { path: '/investors', priority: 0.6, frequency: 'monthly' },
+    { path: '/reports', priority: 0.7, frequency: 'monthly' },
     { path: '/contact', priority: 0.8, frequency: 'monthly' },
   ]
 

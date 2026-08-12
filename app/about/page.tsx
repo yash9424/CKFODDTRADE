@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { PageHero } from '@/components/sections/PageHero'
 import { Section, SectionHeading, Eyebrow } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
+import { ButtonLink } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { LetterBlock } from '@/components/sections/LetterBlock'
 import { TeamGrid } from '@/components/sections/TeamGrid'
@@ -36,6 +37,16 @@ export default function AboutPage() {
           </>
         }
         lead="A Dubai-headquartered international food trading, sourcing, import, export and distribution company, with procurement operations in Surat and Mumbai, India."
+        actions={
+          <>
+            <ButtonLink href="/reports" variant="gold" size="lg">
+              View Company Report
+            </ButtonLink>
+            <ButtonLink href="/investors" variant="outlineLight" size="lg">
+              Project Emerald
+            </ButtonLink>
+          </>
+        }
       />
 
       {/* Objective */}

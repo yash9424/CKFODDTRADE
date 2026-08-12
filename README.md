@@ -65,6 +65,7 @@ Motion: every section entrance runs through `components/ui/Reveal.tsx`
 | `/supply-chain` | Eight-stage flow, control pillars, global network map, locations |
 | `/become-a-supplier` | Supplier proposition + registration form with document upload |
 | `/investors` | Project Emerald, growth roadmap, disclosure position, investor enquiry form |
+| `/reports` | Company Report — planned volumes, growth milestones, capital deployment, performance framework, market, competitive position, risk, governance |
 | `/contact` | HQ details, contact form, all three locations |
 | `/request-a-quote` | Full RFQ system |
 | `/legal/{privacy-policy,terms-and-conditions,cookie-policy,disclaimer}` | Legal |
@@ -102,6 +103,28 @@ disclaimer text lives once in `data/company.ts` (`containerDisclaimer`,
 the products table, every category page with stated volumes, and in the footer.
 The investors page additionally states that no return percentages are published
 and that terms are shared only through a due-diligence process.
+
+---
+
+## Company Report (`/reports`)
+
+Built from the **Project Emerald Executive Investment Memorandum**, with the
+numbers cross-checked against `data/products.ts` so the report can never drift
+from the product pages. The consolidated planned volume (132 containers/month
+across 8 products) is computed at build time, not hard-coded.
+
+**What is deliberately withheld.** The memorandum is marked confidential and
+contains target monthly profit-participation percentages, the capital
+commitment period and a capital repayment schedule. The brief requires that the
+public site publish no investor return percentages and no suggestion of
+guaranteed returns, so those figures are **not** on the page. In their place
+`restrictedNotice` in `data/reports.ts` renders a gated block routing to the
+investor enquiry form, alongside an explicit statement that nothing on the page
+is an offer of securities or a promise of any return.
+
+If those terms are ever to be published, that is a legal/compliance decision —
+publicly advertising investment returns can constitute a regulated financial
+promotion.
 
 ---
 
